@@ -28,6 +28,7 @@ const Weather = () => {
     fetchWeatherData(search);
   }
 
+  console.log(weatherData);
   function getCurrentDate() {
     return new Date().toLocaleDateString("en-US", {
       weekday: "long",
@@ -61,7 +62,7 @@ const Weather = () => {
             <span>{getCurrentDate()}</span>
           </div>
 
-          <div className="temp">{weatherData?.main?.temp}</div>
+          <div className="temp">{(weatherData?.main?.temp  - 273.15).toFixed(2)} &deg;C</div>
           <p className="description">
             {weatherData && weatherData?.weather[0]
               ? weatherData.weather[0].description
